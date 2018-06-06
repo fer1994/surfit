@@ -17,7 +17,8 @@ app.use(bodyParser.json());
 
 
 //Rutas Base
-app.use('/api', user_routes);
+app.use('/user', user_routes);
+app.use('/dom', domicilio_router);
 
 
 module.exports = app;

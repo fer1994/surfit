@@ -5,6 +5,6 @@ var DomicilioController = require('../controllers/domicilio');
 
 var api = express.Router();
 
-api.post('/registrarDomicilio', DomicilioController.saveDomicilio);
+api.post('/registerDom', DomicilioController.saveDomicilio);
 
 module.exports = api;
