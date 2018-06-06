@@ -7,7 +7,6 @@ var DomicilioSchema = Schema({
   direccion: String,
   numero: Number,
   departamento: String,
-  numDpto: Number,
   localidad: String,
   provincia: String
 })
