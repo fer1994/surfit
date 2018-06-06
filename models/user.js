@@ -13,7 +13,9 @@ var UserSchema = Schema({
   sexo: String,
   role: String,
   activo: Boolean,
-  domicilio: { type: Schema.ObjectId, ref: 'Domicilio'}
+  localidad: String,
+  provincia: String,
+  domicilio: String
 })
 
 module.exports = mongoose.model('User', UserSchema);

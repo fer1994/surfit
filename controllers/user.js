@@ -1,6 +1,7 @@
 'use strict'
 
 var bcrypt = require('bcrypt-nodejs');
+var moment = require('moment');
 var User = require('../models/user');
 
 function pruebas(req, res){
@@ -19,19 +20,24 @@ function saveUser(req,res){
   user.apellido = params.apellido;
   user.email = params.email;
   user.documento = params.documento;
-  user.fechaNacimiento = params.fechaNacimiento;
+  if(params.fechaNacimiento != null){
+    //user.fechaNacimiento = moment(params.fechaNacimiento);
+    console.log(moment(params.fechaNacimiento).format());
+  }
   user.sexo = params.sexo;
   user.role = params.role;
   user.activo = params.activo;
-  user.domicilio = null;
+  user.localidad = params.localidad;
+  user.provincia = params.provincia;
+  user.domicilio = params. domicilio;
 
   if(params.password){
     bcrypt.hash(params.password, null, null, function(err, hash){
       user.password = hash;
       if(user.name != null && user.apellido != null && user.email != null ){
-        user.save((err, userStored) => {
+        /*user.save((err, userStored) => {
           if(err){
-            res.status(500).send({ message: 'Error al guardar el usuario'});
+            res.status(500).send({ err: err});
           }else{
             if(!userStored){
               res.status(404).send({ message: 'No se registro correctamente el usuario'});
@@ -39,7 +45,7 @@ function saveUser(req,res){
               res.status(200).send({user: userStored});
             }
           }
-        });
+        });*/
       }else{
         res.status(200).send({ message: 'Todos los datos son obligatorios'});
       }
